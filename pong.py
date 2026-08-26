@@ -23,6 +23,7 @@ ball_speed_y = 5
 
 score1 = 0
 score2 = 0
+font = pygame.font.Font(None, 74)
 
 clock = pygame.time.Clock()
 
@@ -67,5 +68,12 @@ while True:
     pygame.draw.rect(screen, WHITE, player1)
     pygame.draw.rect(screen, WHITE, player2)
     pygame.draw.ellipse(screen, WHITE, ball)
+    pygame.draw.aaline(screen, WHITE, (WIDTH // 2, 0), (WIDTH // 2, HEIGHT))
+
+    score_text1 = font.render(str(score1), True, WHITE)
+    score_text2 = font.render(str(score2), True, WHITE)
+    screen.blit(score_text1, (WIDTH // 4 - score_text1.get_width() // 2, 20))
+    screen.blit(score_text2, (3 * WIDTH // 4 - score_text2.get_width() // 2, 20))
+
     pygame.display.flip()
     clock.tick(60)
