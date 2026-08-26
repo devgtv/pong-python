@@ -45,6 +45,9 @@ while True:
     if ball.top <= 0 or ball.bottom >= HEIGHT:
         ball_speed_y *= -1
 
+    if ball.colliderect(player1) or ball.colliderect(player2):
+        ball_speed_x *= -1
+
     screen.fill(BLACK)
     pygame.draw.rect(screen, WHITE, player1)
     pygame.draw.rect(screen, WHITE, player2)
