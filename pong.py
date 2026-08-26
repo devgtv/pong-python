@@ -21,6 +21,9 @@ ball = pygame.Rect(WIDTH // 2 - BALL_SIZE // 2, HEIGHT // 2 - BALL_SIZE // 2, BA
 ball_speed_x = 5
 ball_speed_y = 5
 
+score1 = 0
+score2 = 0
+
 clock = pygame.time.Clock()
 
 while True:
@@ -47,6 +50,18 @@ while True:
 
     if ball.colliderect(player1) or ball.colliderect(player2):
         ball_speed_x *= -1
+
+    if ball.left <= 0:
+        score2 += 1
+        ball.center = (WIDTH // 2, HEIGHT // 2)
+        ball_speed_x = 5
+        ball_speed_y = 5
+
+    if ball.right >= WIDTH:
+        score1 += 1
+        ball.center = (WIDTH // 2, HEIGHT // 2)
+        ball_speed_x = -5
+        ball_speed_y = 5
 
     screen.fill(BLACK)
     pygame.draw.rect(screen, WHITE, player1)
